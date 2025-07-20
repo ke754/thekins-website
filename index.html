@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>THEKINS OS - الموقع الرسمي</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #0b0b0b;
+      color: #ffffff;
+      text-align: center;
+      padding: 50px;
+    }
+    h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+      color: #00ff88;
+    }
+    .button {
+      background-color: #00c4ff;
+      border: none;
+      color: white;
+      padding: 15px 30px;
+      text-align: center;
+      font-size: 18px;
+      margin: 10px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .button:hover {
+      background-color: #0099cc;
+    }
+    #download-section, #upload-section, #updates-section {
+      display: none;
+      margin-top: 30px;
+    }
+    input[type="file"] {
+      margin-top: 10px;
+    }
+    #updates-section {
+      background-color: #1a1a1a;
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+  <h1>THEKINS TEAM</h1>
+  <p>لتحميل نظام Android 13 الوهمي، اشترك في القناة أولاً</p>
+  <button class="button" onclick="subscribeAndShowSections()">اشترك في القناة</button>
+
+  <div id="download-section">
+    <p>بعد الاشتراك، يمكنك تحميل النظام من هنا:</p>
+    <a href="https://example.com/download/THEKINS_OS.zip" download>
+      <button class="button">تحميل النظام</button>
+    </a>
+  </div>
+
+  <div id="upload-section">
+    <p>قم بتسجيل الدخول بحساب جوجل لرفع البرامج أو الألعاب بصيغة مضغوطة فقط (zip, rar):</p>
+    <button class="button" onclick="loginWithGoogle()">تسجيل الدخول بجوجل</button>
+    <br>
+    <input type="file" id="uploadInput" accept=".zip,.rar" style="display: none;">
+    <button class="button" id="uploadButton" style="display: none;" onclick="uploadFile()">رفع الملف</button>
+    <p id="uploadStatus"></p>
+  </div>
+
+  <div id="updates-section">
+    <h2>التحديثات القادمة</h2>
+    <ul style="text-align: right; max-width: 600px; margin: 0 auto;">
+      <li>إضافة تسجيل دخول حقيقي عبر Google</li>
+      <li>سيرفر لتخزين الملفات المرفوعة</li>
+      <li>لوحة تحكم للمستخدمين</li>
+      <li>نظام تعليقات وتقييمات</li>
+    </ul>
+  </div>
+
+  <script>
+    function subscribeAndShowSections() {
+      window.open("https://www.youtube.com/@OMARTHEKING-7", "_blank");
+      setTimeout(() => {
+        document.getElementById("download-section").style.display = "block";
+        document.getElementById("upload-section").style.display = "block";
+        document.getElementById("updates-section").style.display = "block";
+      }, 3000);
+    }
+
+    function loginWithGoogle() {
+      // تمثيل تسجيل الدخول بجوجل
+      alert("تم تسجيل الدخول بحساب جوجل (تمثيلي)");
+      document.getElementById("uploadInput").style.display = "block";
+      document.getElementById("uploadButton").style.display = "inline-block";
+    }
+
+    function uploadFile() {
+      const input = document.getElementById("uploadInput");
+      const status = document.getElementById("uploadStatus");
+      if (input.files.length === 0) {
+        status.innerText = "من فضلك اختر ملفًا للرفع.";
+        return;
+      }
+      const file = input.files[0];
+      const allowed = ["application/zip", "application/x-rar-compressed"];
+
+      if (!allowed.includes(file.type) && !file.name.endsWith(".rar")) {
+        status.innerText = "الملف يجب أن يكون مضغوط بصيغة ZIP أو RAR فقط.";
+        return;
+      }
+
+      // تمثيل عملية الرفع
+      status.innerText = "جاري رفع الملف...";
+      setTimeout(() => {
+        status.innerText = `تم رفع الملف: ${file.name}`;
+      }, 2000);
+    }
+  </script>
+</body>
+</html>
